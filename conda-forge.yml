@@ -4,6 +4,7 @@ github:
   tooling_branch_name: main
 provider:
   linux_aarch64: default
+  osx_arm64: default
 build_platform:
   win_arm64: win_64
 test: native_and_emulated
