@@ -1,7 +1,7 @@
 About kache-feedstock
 =====================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/kache-feedstock-win-arm64-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/kache-feedstock-osx-arm64-feedstock/blob/main/LICENSE.txt)
 
 Home: https://kunobi.ninja/docs/kache
 
@@ -18,8 +18,8 @@ Current build status
 <table><tr>
     <td>GitHub Actions</td>
     <td>
-      <a href="https://github.com/conda-forge/kache-feedstock-win-arm64-feedstock/actions/workflows/conda-build.yml">
-        <img src="https://github.com/conda-forge/kache-feedstock-win-arm64-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      <a href="https://github.com/conda-forge/kache-feedstock-osx-arm64-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/kache-feedstock-osx-arm64-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -30,7 +30,7 @@ Current build status
       <details>
         <summary>
           <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-win-arm64-feedstock?branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-osx-arm64-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -39,14 +39,21 @@ Current build status
               <td>osx_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-win-arm64-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-osx-arm64-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-osx-arm64-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-win-arm64-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/kache-feedstock-osx-arm64-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
