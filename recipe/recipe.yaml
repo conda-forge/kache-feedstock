@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.14.2"
+  version: "0.15.0"
 
 package:
   name: kache
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/kunobi-ninja/kache/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: b5ab90b260e35675cef0b6b1ca0868d3e994c96c995cb4e7a3963cec8b23fb3a
+  sha256: 8b5f9781149dbb21e90694cf3b7286acf3b6de19e325d4a1133c0bb025d0e5f3
 
 build:
   number: 0
