@@ -12,7 +12,7 @@ source:
   sha256: c295e6aed7f4f8b16b8c6b3b84a914b42c4f0a2af8dc18652da85ae97b84aac1
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -21,6 +21,12 @@ build:
       LIBSQLITE3_SYS_USE_PKG_CONFIG: "1"
     interpreter: brush
     content:
+      # kache's build.rs links its build-script launcher with the link-args from
+      # the rustflags and embeds the signed binary in kache. An absolute $PREFIX
+      # rpath would end up inside it, and prefix replacement at install time
+      # would invalidate its signature, so macOS kills every cached build script.
+      - if: osx
+        then: export CARGO_BUILD_RUSTFLAGS="${CARGO_BUILD_RUSTFLAGS//"$PREFIX/lib"/@loader_path/../lib}"
       - cargo auditable install --locked --no-track --bins --root "${LIBRARY_PREFIX:-$PREFIX}" --path .
       - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
