@@ -223,4 +223,5 @@ Feedstock Maintainers
 =====================
 
 * [@baszalmstra](https://github.com/baszalmstra/)
+* [@haecker-felix](https://github.com/haecker-felix/)
 
