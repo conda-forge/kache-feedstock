@@ -12,7 +12,10 @@ source:
   sha256: 86204a35abc665eaf2c59cb764a3fbab6ce6762a4c450e209dcbfdadc80b4ef2
 
 build:
-  number: 0
+  number: 1
+  dynamic_linking:
+    # Relocation would turn the absolute rpath added below into @loader_path.
+    binary_relocation: ${{ not osx }}
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -28,6 +31,13 @@ build:
       - if: osx
         then: export CARGO_BUILD_RUSTFLAGS="${CARGO_BUILD_RUSTFLAGS//"$PREFIX/lib"/@loader_path/../lib}"
       - cargo auditable install --locked --no-track --bins --root "${LIBRARY_PREFIX:-$PREFIX}" --path .
+      # kache hardlinks itself into each target directory to run cached build
+      # scripts, where @loader_path/../lib doesn't reach libsqlite3. Give the
+      # outer binary an absolute rpath too; prefix replacement keeps it valid.
+      - if: osx
+        then:
+          - $INSTALL_NAME_TOOL -add_rpath "$PREFIX/lib" "$PREFIX/bin/kache"
+          - codesign --force --sign - "$PREFIX/bin/kache"
       - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 requirements:
