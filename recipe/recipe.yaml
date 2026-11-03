@@ -58,6 +58,13 @@ tests:
         - kache
   - script:
       - kache --help
+  # kache runs a hardlinked copy of itself from each target directory.
+  - if: osx
+    then:
+      script:
+        - mkdir relocated
+        - cp "$PREFIX/bin/kache" relocated/kache
+        - relocated/kache --version
 
 about:
   homepage: https://kunobi.ninja/docs/kache
