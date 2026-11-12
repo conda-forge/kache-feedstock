@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "1.2.2"
+  version: "2.1.0"
 
 package:
   name: kache
@@ -9,10 +9,10 @@ package:
 
 source:
   url: https://github.com/kunobi-ninja/kache/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 86204a35abc665eaf2c59cb764a3fbab6ce6762a4c450e209dcbfdadc80b4ef2
+  sha256: 9265e2852adfaccb5640764dd19fa7b8a0e042d8a7288ea042fefee47d44b86c
 
 build:
-  number: 1
+  number: 0
   dynamic_linking:
     # Relocation would turn the absolute rpath added below into @loader_path.
     binary_relocation: ${{ not osx }}
