@@ -1,0 +1,5 @@
+# kache calls memfd_create(2), which glibc only exports since 2.27; the
+# conda-forge default sysroot (2.17) lacks the symbol at link time.
+c_stdlib_version:
+  - if: linux
+    then: "2.28"

@@ -31,13 +31,14 @@ build:
       - if: osx
         then: export CARGO_BUILD_RUSTFLAGS="${CARGO_BUILD_RUSTFLAGS//"$PREFIX/lib"/@loader_path/../lib}"
       - cargo auditable install --locked --no-track --bins --root "${LIBRARY_PREFIX:-$PREFIX}" --path .
-      # kache hardlinks itself into each target directory to run cached build
-      # scripts, where @loader_path/../lib doesn't reach libsqlite3. Give the
-      # outer binary an absolute rpath too; prefix replacement keeps it valid.
+      # kache-engine is the binary linked against conda-forge's SQLite. kache
+      # copies itself and the engine into each target directory, where
+      # @loader_path/../lib doesn't reach libsqlite3, so give the engine an
+      # absolute rpath; prefix replacement keeps it valid.
       - if: osx
         then:
-          - $INSTALL_NAME_TOOL -add_rpath "$PREFIX/lib" "$PREFIX/bin/kache"
-          - codesign --force --sign - "$PREFIX/bin/kache"
+          - $INSTALL_NAME_TOOL -add_rpath "$PREFIX/lib" "$PREFIX/bin/kache-engine"
+          - codesign --force --sign - "$PREFIX/bin/kache-engine"
       - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 requirements:
@@ -56,14 +57,18 @@ tests:
   - package_contents:
       bin:
         - kache
+        - kache-engine
+        - kache-cl
+        - kache-clang-cl
   - script:
       - kache --help
-  # kache runs a hardlinked copy of itself from each target directory.
+  # kache runs a hardlinked copy of itself from each target directory and
+  # requires kache-engine beside every frontend copy.
   - if: osx
     then:
       script:
         - mkdir relocated
-        - cp "$PREFIX/bin/kache" relocated/kache
+        - cp "$PREFIX/bin/kache" "$PREFIX/bin/kache-engine" relocated/
         - relocated/kache --version
 
 about:
